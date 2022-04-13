@@ -9,10 +9,11 @@ public class SetValue : MonoBehaviour
 {
     public float duration = 1;
 
+    [SerializeField] private int nextValue = 0;
     [SerializeField] private TMP_Text text;
 
     #region Test params
-    [SerializeField] private int nextValue = 0;
+    [Header("Test field")]
     [SerializeField] private bool setNewValue = false;
 
 
@@ -27,7 +28,10 @@ public class SetValue : MonoBehaviour
     #endregion
 
 
-
+    /// <summary>
+    /// Set num to text component
+    /// </summary>
+    /// <param name="num"></param>
     public void SetValueToText(int num)
     {
         nextValue = num;
@@ -46,6 +50,7 @@ public class SetValue : MonoBehaviour
         text.text = SetDotToNumber(nextValue);
     }
 
+    //replace ' ' symbol (space) to dot
     private string SetDotToNumber(float num)
     {
         var endResult = $"{num:#,0}";
