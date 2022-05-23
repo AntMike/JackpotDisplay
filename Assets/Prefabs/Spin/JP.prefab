@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: {fileID: 396518068937423595}
+  blinkMaterial: {fileID: 2100000, guid: 17cd0e77c32c243259416ab6f106c5b2, type: 2}
   value: 0
   crystal: {fileID: 4548739167422831896}
 --- !u!1 &5005601444138668011

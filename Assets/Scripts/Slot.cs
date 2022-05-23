@@ -2,17 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Jackpot.Spin
 {
     public class Slot : MonoBehaviour
     {
         [SerializeField] protected Transform title;
+        [SerializeField] protected Material blinkMaterial;
         public SlotValue value;
         
         public virtual void ShowAnimation()
         {
             EnlargeTitle();
+            StartCoroutine(BlinkTitle());
+        }
+
+        protected IEnumerator BlinkTitle()
+        {
+            title.GetComponent<Image>().material = blinkMaterial;
+
+            yield return new WaitForSeconds(7);
+            title.GetComponent<Image>().material = null;
         }
 
         protected void EnlargeTitle()

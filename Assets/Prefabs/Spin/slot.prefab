@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: {fileID: 3273610154798890448}
+  blinkMaterial: {fileID: 2100000, guid: 17cd0e77c32c243259416ab6f106c5b2, type: 2}
   value: 0
 --- !u!1 &5029858086057974365
 GameObject:
