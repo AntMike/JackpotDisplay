@@ -11,6 +11,7 @@ namespace Jackpot.Spin
         [SerializeField] protected Transform title;
         [SerializeField] protected Material blinkMaterial;
         public SlotValue value;
+        public Color color;
         
         public virtual void ShowAnimation()
         {

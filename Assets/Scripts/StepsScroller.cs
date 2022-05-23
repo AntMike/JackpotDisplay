@@ -113,7 +113,7 @@ namespace Jackpot.Spin
                 slot.ShowAnimation();
             }
 
-            winScreen.ShowJP(slot.value);
+            winScreen.ShowJP(slot.value,slot.color);
         }
 
 

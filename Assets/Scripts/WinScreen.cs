@@ -13,6 +13,7 @@ namespace Jackpot.UI
         [SerializeField] private Image jpImage;
         [SerializeField] private List<Sprite> jpSprites;
         [SerializeField] private SetValue jpSize;
+        [SerializeField] private FireworksController fireworksController;
 
         [Header("Test Fields")] 
         [SerializeField] private GameObject respin;
@@ -21,11 +22,16 @@ namespace Jackpot.UI
         {
             winPanel.SetActive(false);
             respin.SetActive(false);
+            fireworksController.Stop();
         }
         
-        public void ShowJP(SlotValue jp)
+        public void ShowJP(SlotValue jp, Color color)
         {
             respin.SetActive(true);
+
+            fireworksController.SetFireworkColor(color);
+            fireworksController.Play();
+            
             int sp = jp switch
             {
                 SlotValue.JPSilver => 0,
