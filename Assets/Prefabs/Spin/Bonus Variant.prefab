@@ -37,7 +37,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 87453275121009110, guid: 71d349ba436df9243aee59f1e8700c35, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 900
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 87453275121009110, guid: 71d349ba436df9243aee59f1e8700c35, type: 3}
       propertyPath: m_SizeDelta.y
@@ -99,13 +99,21 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 16aeb95c3e7d4f443985a39c0624c41f, type: 3}
+    - target: {fileID: 4505855174230343007, guid: 71d349ba436df9243aee59f1e8700c35, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6be96bd0ae2de074292ccd21a70b5f6f, type: 3}
     - target: {fileID: 5176445511710679572, guid: 71d349ba436df9243aee59f1e8700c35, type: 3}
       propertyPath: m_Name
-      value: Bonus
+      value: Bonus Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5245205328338967492, guid: 71d349ba436df9243aee59f1e8700c35, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 6be96bd0ae2de074292ccd21a70b5f6f, type: 3}
+    - target: {fileID: 9202558738888462241, guid: 71d349ba436df9243aee59f1e8700c35, type: 3}
+      propertyPath: value
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d349ba436df9243aee59f1e8700c35, type: 3}

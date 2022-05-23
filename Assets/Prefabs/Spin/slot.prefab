@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2355675344253623049}
   - component: {fileID: 6966395446842837306}
   - component: {fileID: 9061041517903327149}
+  - component: {fileID: 3930515708303588256}
   m_Layer: 5
   m_Name: slot
   m_TagString: Untagged
@@ -91,6 +92,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 2
   m_AspectRatio: 1.4172336
+--- !u!114 &3930515708303588256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3987489056769727075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8842b95ce914664af4107b6e096738e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: {fileID: 3273610154798890448}
+  value: 0
 --- !u!1 &5029858086057974365
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

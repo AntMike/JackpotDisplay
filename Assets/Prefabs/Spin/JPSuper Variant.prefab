@@ -13,7 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 3aa9f8f80e4f7e740aa74fa2c58e5e2b, type: 3}
     - target: {fileID: 2285836475912920408, guid: 1394a298ce4a49d49af84b3228fa2076, type: 3}
       propertyPath: m_Name
-      value: JPSuper
+      value: JPSuper Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871202576154013933, guid: 1394a298ce4a49d49af84b3228fa2076, type: 3}
+      propertyPath: value
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6437952463903260314, guid: 1394a298ce4a49d49af84b3228fa2076, type: 3}
       propertyPath: m_Pivot.x
@@ -45,7 +49,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6437952463903260314, guid: 1394a298ce4a49d49af84b3228fa2076, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 900
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6437952463903260314, guid: 1394a298ce4a49d49af84b3228fa2076, type: 3}
       propertyPath: m_SizeDelta.y
@@ -99,6 +103,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7414757347486024211, guid: 1394a298ce4a49d49af84b3228fa2076, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3aa9f8f80e4f7e740aa74fa2c58e5e2b, type: 3}
     - target: {fileID: 8893771813419281011, guid: 1394a298ce4a49d49af84b3228fa2076, type: 3}
       propertyPath: m_Sprite
       value: 

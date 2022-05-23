@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Jackpot.UI;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -10,47 +11,24 @@ namespace Jackpot.Spin
 {
     public class StepsScroller : MonoBehaviour
     {
-        public bool calculateScroll = false;
-        private bool _isTouching = false;
         private bool _wasSpin = false;
-        public bool isTouching
-        {
-            get => _isTouching && !_wasSpin;
-            set
-            {
-                _isTouching = value;
-                //SetPosition(parent.childCount - Random.Range(1, 3));
-            }
-        }
-
-
-        public Transform parent;
-        public ScrollRect scrollRect;
-        public AnimationCurve scrollPass;
-        public AnimationCurve scrollPassRollback;
+        [SerializeField] private WinScreen winScreen;
+        [SerializeField] private Transform parent;
+        [SerializeField] private ScrollRect scrollRect;
+        [SerializeField] private Scrollbar scrollbar;
+        
+        [SerializeField] private AnimationCurve scrollPass;
+        [SerializeField] private AnimationCurve scrollPassRollback;
+        
         private List<float> _tabsPos = new List<float>();
-        public int activeBtn;
-        public Scrollbar scrollbar;
+        private List<GameObject> _spawnedItems = new List<GameObject>();
+        private int activeBtn;
         private float _distance;
-        private float _scrollPos;
-        private float _scrollTargetPos;
-
-        private Coroutine _inertiaCor;
-        private bool _inertiaDoing = false;
-        private float _inertiaMaxDur = 5;
-        private float _inertiaDur = 0;
-
-
-        private void Start()
-        {
-            Init();
-        }
 
         public void Init()
         {
-            _inertiaDoing = false;
-            _inertiaDur = 0;
-
+            winScreen.Init();
+            _wasSpin = false;
             activeBtn = -1;
 
             _tabsPos = new List<float>(new float[parent.childCount]);
@@ -65,16 +43,29 @@ namespace Jackpot.Spin
                 _tabsPos[i] = _distance * i;
             }
 
-            scrollbar.value =  _tabsPos[1];
+            //scrollbar.value = _tabsPos[2];
+            StartCoroutine(ScrollbarLateUpdate(_tabsPos[2]));
+        }
+
+        private IEnumerator ScrollbarLateUpdate(float pos)
+        {
+            yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();
+            scrollbar.value = pos;
+        }
+
+        public void SpawnItem(GameObject item)
+        {
+            GameObject go = Instantiate(item, parent);
+            _spawnedItems.Add(go);
         }
 
         public void StartSpin()
         {
-            if (!_wasSpin)
-            {
-                _wasSpin = true;
-                StartCoroutine(Scroll());
-            }
+            if (_wasSpin) return;
+            
+            _wasSpin = true;
+            StartCoroutine(Scroll());
         }
 
         private IEnumerator Scroll()
@@ -82,7 +73,8 @@ namespace Jackpot.Spin
             float time = .2f;
             float initValue = scrollbar.value;
             float startRollBackValue = initValue - _distance / 5;
-            float finishPosition = _tabsPos[parent.childCount - Random.Range(2, 5)];
+            activeBtn = Random.Range((int) (parent.childCount * .75f), (int) (parent.childCount - 1));
+            float finishPosition = _tabsPos[activeBtn];
             while (time>=0)
             {
                 time -= Time.deltaTime;
@@ -101,87 +93,37 @@ namespace Jackpot.Spin
 
             scrollbar.value = finishPosition;
             yield return new WaitForEndOfFrame();
-            scrollRect.enabled = false;
-            
-            yield break;
+            //scrollRect.enabled = false;
+            SlotSelected();
         }
 
-        private void SetPosition(int num)
+        private void SlotSelected()
         {
-            _scrollTargetPos = _scrollPos = _tabsPos[num];
-            _inertiaDur = _inertiaMaxDur - .2f;
+            var slot = _spawnedItems[activeBtn].GetComponent<Slot>();
+            if (slot is SimpleSlot simpleSlot)
+            {
+                simpleSlot.ShowAnimation();
+            }
+            else if(slot is CrystalSlot crystalSlot)
+            {
+                crystalSlot.ShowAnimation();
+            }
+            else
+            {
+                slot.ShowAnimation();
+            }
+
+            winScreen.ShowJP(slot.value);
         }
 
 
-        private void ClearAllBtns()
+        public void ClearAll()
         {
             while (parent.childCount > 0)
             {
                 DestroyImmediate(parent.GetChild(0).gameObject);
             }
+            _spawnedItems.Clear();
         }
-
-
-        /*private void Update()
-        {
-            if (!calculateScroll) return;
-            if (_inertiaDoing)
-            {
-                _inertiaDur += Time.deltaTime;
-
-                if (_inertiaDur > _inertiaMaxDur)
-                {
-                    _inertiaDoing = false;
-                    _inertiaDur = 0;
-                }
-            }
-
-            Scroll();
-        }
-
-        private void Scroll()
-        {
-            if (isTouching || _inertiaDoing)
-            {
-                _scrollPos = scrollbar.value;
-                if (isTouching)
-                {
-                    _inertiaDoing = true;
-                }
-
-                for (int i = 0; i < posDuration.Count; i++)
-                {
-                    if (_scrollPos < posDuration[i] + (_distance / 2) &&
-                        _scrollPos > posDuration[i] - (_distance / 2))
-                    {
-                        int k = i;
-                        if (activeBtn != k)
-                        {
-                            activeBtn = k;
-                            _scrollTargetPos = posDuration[i];
-                        }
-                    }
-                }
-            }
-            else
-            {
-                for (int i = 0; i < posDuration.Count; i++)
-                {
-                    if ((_scrollTargetPos < posDuration[i] + (_distance / 2) &&
-                         _scrollTargetPos > posDuration[i] - (_distance / 2)) ||
-                        (_scrollTargetPos < 0 && i == 0) || (_scrollTargetPos > 1 && i == posDuration.Count - 1))
-                    {
-                        int k = i;
-                        if (k != activeBtn)
-                        {
-                            activeBtn = k;
-                            _scrollTargetPos = posDuration[i];
-                        }
-
-                        scrollbar.value = Mathf.Lerp(scrollbar.value, posDuration[i], 0.1f);
-                    }
-                }
-            }
-        }*/
     }
 }

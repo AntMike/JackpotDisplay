@@ -1,23 +1,15 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &525915025882545266
+--- !u!1001 &987728645807757588
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1199144531533292680, guid: 1394a298ce4a49d49af84b3228fa2076, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 485a782e878da3d4186a869a27f2a460, type: 3}
     - target: {fileID: 2285836475912920408, guid: 1394a298ce4a49d49af84b3228fa2076, type: 3}
       propertyPath: m_Name
-      value: JPSilver Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 2871202576154013933, guid: 1394a298ce4a49d49af84b3228fa2076, type: 3}
-      propertyPath: value
-      value: 7
+      value: JP
       objectReference: {fileID: 0}
     - target: {fileID: 6437952463903260314, guid: 1394a298ce4a49d49af84b3228fa2076, type: 3}
       propertyPath: m_Pivot.x
@@ -49,7 +41,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6437952463903260314, guid: 1394a298ce4a49d49af84b3228fa2076, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 900
       objectReference: {fileID: 0}
     - target: {fileID: 6437952463903260314, guid: 1394a298ce4a49d49af84b3228fa2076, type: 3}
       propertyPath: m_SizeDelta.y
@@ -103,17 +95,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7414757347486024211, guid: 1394a298ce4a49d49af84b3228fa2076, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 485a782e878da3d4186a869a27f2a460, type: 3}
-    - target: {fileID: 8893771813419281011, guid: 1394a298ce4a49d49af84b3228fa2076, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cdf5da0ec2ee2ce48a47ee75f11d1aee, type: 3}
-    - target: {fileID: 9132664448354073925, guid: 1394a298ce4a49d49af84b3228fa2076, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 7c7f93cf7b9a3e246bc1fdea17924db1, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1394a298ce4a49d49af84b3228fa2076, type: 3}
