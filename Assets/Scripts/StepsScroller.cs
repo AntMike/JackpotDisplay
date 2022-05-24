@@ -19,6 +19,10 @@ namespace Jackpot.Spin
         
         [SerializeField] private AnimationCurve scrollPass;
         [SerializeField] private AnimationCurve scrollPassRollback;
+
+        [Header("Sound")] 
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip spinClip;
         
         private List<float> _tabsPos = new List<float>();
         private List<GameObject> _spawnedItems = new List<GameObject>();
@@ -64,6 +68,7 @@ namespace Jackpot.Spin
         {
             if (_wasSpin) return;
             
+            audioSource.PlayOneShot(spinClip, .8f);
             _wasSpin = true;
             StartCoroutine(Scroll());
         }

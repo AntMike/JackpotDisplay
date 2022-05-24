@@ -25,12 +25,14 @@ public class SoundPlayTime : MonoBehaviour {
 		audioSource = GetComponent<AudioSource>();
 		audioSource.playOnAwake = playOnAwake ;
 		flag = !playOnAwake;
+		//loopTime = 0;
+		timer = 0;
 		if(playOnAwake){
-			audioSource.clip = sound01;
+			/*audioSource.clip = sound01;
 			audioSource.Play ();
 			if(loopCheck == false){
 				Destroy(this);
-			}
+			}*/
 		}else
 		{
 			audioSource.Stop();

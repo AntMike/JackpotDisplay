@@ -7,14 +7,17 @@ namespace Jackpot.UI
     public class FireworksController : MonoBehaviour
     {
         [SerializeField] private List<ParticleSystem> particles;
-        [SerializeField] private SoundPlayTime soundPlayTime;
+        [SerializeField] private List<SoundPlayTime> soundPlayTime;
 
 
         public void Play()
         {
             particles[0].Play();
-            soundPlayTime.playOnAwake = true;
-            soundPlayTime.Init();
+            soundPlayTime.ForEach(x =>
+            {
+                x.playOnAwake = true;
+                x.Init();
+            });
         }
 
         public void SetFireworkColor(Color color)
@@ -34,8 +37,11 @@ namespace Jackpot.UI
                 x.Stop();
                 x.Clear();
             });
-            soundPlayTime.playOnAwake = false;
-            soundPlayTime.Init();
+            soundPlayTime.ForEach(x =>
+            {
+                x.playOnAwake = false;
+                x.Init();
+            });
         }
     }
 }

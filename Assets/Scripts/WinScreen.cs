@@ -14,6 +14,7 @@ namespace Jackpot.UI
         [SerializeField] private List<Sprite> jpSprites;
         [SerializeField] private SetValue jpSize;
         [SerializeField] private FireworksController fireworksController;
+        [SerializeField] private Animator jpAnimator;
 
         [Header("Test Fields")] 
         [SerializeField] private GameObject respin;
@@ -42,6 +43,7 @@ namespace Jackpot.UI
             if(sp == 3) return;
             jpImage.sprite = jpSprites[sp];
             winPanel.SetActive(true);
+            jpAnimator.Play(sp == 0? "jpSilver":sp == 1?"jpGold":"jpSuper",0,0);
             jpSize.duration = 4;
             jpSize.SetValueToText(254958);
 

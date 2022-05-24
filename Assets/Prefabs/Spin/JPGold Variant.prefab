@@ -12,6 +12,10 @@ PrefabInstance:
       value: JPGold Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2871202576154013933, guid: 1394a298ce4a49d49af84b3228fa2076, type: 3}
+      propertyPath: value
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871202576154013933, guid: 1394a298ce4a49d49af84b3228fa2076, type: 3}
       propertyPath: color.b
       value: 0.48235297
       objectReference: {fileID: 0}
